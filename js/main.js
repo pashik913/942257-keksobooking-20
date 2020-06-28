@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 'use strict';
-
+// Отдельный модуль 1
 var OFFER = {
   ammount: 8,
   avatar: ['img/avatars/user01.png', 'img/avatars/user02.png', 'img/avatars/user03.png', 'img/avatars/user04.png', 'img/avatars/user05.png', 'img/avatars/user06.png', 'img/avatars/user07.png', 'img/avatars/user08.png'],
@@ -60,6 +60,7 @@ var addClass = function (element, className) {
   element.classList.add(className);
 };
 
+// Отдельный модуль 1
 var getOffer = function () {
   var x = getRandomIntInclusive(OFFER.location.x.min, OFFER.location.x.max);
   var y = getRandomIntInclusive(OFFER.location.y.min, OFFER.location.y.max);
@@ -140,6 +141,18 @@ var setDisabled = function (fields) {
   }
 };
 
+
+var address = document.querySelector('#address');
+
+var setAddress = function (elem, offset) {
+  var x = Math.round(elem.offsetLeft + elem.offsetWidth / 2);
+  var y = Math.round(elem.offsetTop + elem.offsetHeight / offset);
+
+  address.value = x + ', ' + y;
+};
+
+setAddress(mainPin, 2);
+
 setDisabled(filters);
 setDisabled(fieldsets);
 
@@ -151,6 +164,7 @@ var activatePage = function () {
   setDisabled(fieldsets);
   isActive = true;
   document.removeEventListener('keydown', onPinEnterPress);
+  setAddress(mainPin, 1);
 };
 
 var deactivatePage = function () {
@@ -187,27 +201,17 @@ buttonReset.addEventListener('click', function (evt) {
 
 var typeOfHouse = document.querySelector('#type');
 var priceOfHouse = document.querySelector('#price');
-
-priceOfHouse.placeholder = '1000';
-priceOfHouse.min = '1000';
+var priceOfType = {
+  bungalo: 0,
+  flat: 1000,
+  house: 5000,
+  palace: 10000
+};
 
 var onSelectChange = function () {
-  if (typeOfHouse.value === 'bungalo') {
-    priceOfHouse.placeholder = '0';
-    priceOfHouse.min = '0';
-  }
-  if (typeOfHouse.value === 'flat') {
-    priceOfHouse.placeholder = '1000';
-    priceOfHouse.min = '1000';
-  }
-  if (typeOfHouse.value === 'house') {
-    priceOfHouse.placeholder = '5000';
-    priceOfHouse.min = '5000';
-  }
-  if (typeOfHouse.value === 'palace') {
-    priceOfHouse.placeholder = '10000';
-    priceOfHouse.min = '10000';
-  }
+  var value = typeOfHouse.value;
+  priceOfHouse.placeholder = priceOfType[value];
+  priceOfHouse.min = priceOfType[value];
 };
 
 document.addEventListener('change', onSelectChange);
@@ -277,3 +281,4 @@ priceOfHouse.addEventListener('input', function () {
     priceOfHouse.setCustomValidity('');
   }
 });
+

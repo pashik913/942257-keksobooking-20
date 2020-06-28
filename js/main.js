@@ -185,8 +185,10 @@ mainPin.addEventListener('mousedown', function (evt) {
   }
 });
 
+var ENTER_BUTTON = 'Enter';
+
 var onPinEnterPress = function (evt) {
-  if (evt.key === 'Enter') {
+  if (evt.key === ENTER_BUTTON) {
     evt.preventDefault();
     activatePage();
   }

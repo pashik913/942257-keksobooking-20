@@ -33,7 +33,7 @@
   var activatePage = function () {
     window.utils.removeClass(map, 'map--faded');
     window.utils.removeClass(adForm, 'ad-form--disabled');
-    window.pin.renderPins(window.data.getOffers());
+    window.pin.render(window.data.getOffers());
     setDisabled(filters);
     setDisabled(fieldsets);
     isActive = true;
@@ -44,7 +44,7 @@
   var deactivatePage = function () {
     window.utils.addClass(map, 'map--faded');
     window.utils.addClass(adForm, 'ad-form--disabled');
-    window.pin.removePins();
+    window.pin.remove();
     setDisabled(filters);
     setDisabled(fieldsets);
     document.addEventListener('keydown', onPinEnterPress);
@@ -70,8 +70,13 @@
 
   document.addEventListener('keydown', onPinEnterPress);
 
-  buttonReset.addEventListener('click', function (evt) {
-    evt.preventDefault();
-    deactivatePage();
-  });
+  // buttonReset.addEventListener('click', function (evt) {
+  //   evt.preventDefault();
+  //   deactivatePage();
+  // });
+
+  window.map = {
+    buttonReset: buttonReset,
+    deactivatePage: deactivatePage
+  };
 })();

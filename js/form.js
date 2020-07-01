@@ -83,4 +83,9 @@
       priceOfHouse.setCustomValidity('');
     }
   });
+
+  window.map.buttonReset.addEventListener('click', function (evt) {
+    evt.preventDefault();
+    window.map.deactivatePage();
+  });
 })();

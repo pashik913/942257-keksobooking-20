@@ -39,7 +39,7 @@
   };
 
   window.pin = {
-    renderPins: renderPins,
-    removePins: removePins
+    render: renderPins,
+    remove: removePins
   };
 })();

@@ -9,6 +9,7 @@
     house: 5000,
     palace: 10000
   };
+  var buttonReset = document.querySelector('.ad-form__reset');
 
   var onSelectChange = function () {
     var value = typeOfHouse.value;
@@ -84,7 +85,7 @@
     }
   });
 
-  window.map.buttonReset.addEventListener('click', function (evt) {
+  buttonReset.addEventListener('click', function (evt) {
     evt.preventDefault();
     window.map.deactivatePage();
   });

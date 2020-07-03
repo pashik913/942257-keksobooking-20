@@ -71,8 +71,6 @@
     return array;
   };
 
-  window.data = {
-    getOffers: getOffers
-  };
+  window.data = getOffers();
 })();
 

@@ -3,10 +3,8 @@
 (function () {
   var map = document.querySelector('.map');
   var adForm = document.querySelector('.ad-form');
-
   var mainPin = document.querySelector('.map__pin--main');
   var isActive = false;
-  var buttonReset = document.querySelector('.ad-form__reset');
   var filters = document.querySelectorAll('.map__filter');
   var fieldsets = document.querySelectorAll('fieldset');
 
@@ -33,7 +31,7 @@
   var activatePage = function () {
     window.utils.removeClass(map, 'map--faded');
     window.utils.removeClass(adForm, 'ad-form--disabled');
-    window.pin.render(window.data.getOffers());
+    window.pin.render(window.data);
     setDisabled(filters);
     setDisabled(fieldsets);
     isActive = true;
@@ -70,13 +68,7 @@
 
   document.addEventListener('keydown', onPinEnterPress);
 
-  // buttonReset.addEventListener('click', function (evt) {
-  //   evt.preventDefault();
-  //   deactivatePage();
-  // });
-
   window.map = {
-    buttonReset: buttonReset,
     deactivatePage: deactivatePage
   };
 })();

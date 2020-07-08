@@ -31,7 +31,7 @@
   var activatePage = function () {
     window.utils.removeClass(map, 'map--faded');
     window.utils.removeClass(adForm, 'ad-form--disabled');
-    window.pin.render(window.data);
+    window.data.load();
     setDisabled(filters);
     setDisabled(fieldsets);
     isActive = true;

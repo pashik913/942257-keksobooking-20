@@ -7,6 +7,7 @@
   var isActive = false;
   var filters = document.querySelectorAll('.map__filter');
   var fieldsets = document.querySelectorAll('fieldset');
+  // var filterForm = document.querySelectorAll('.map__filters'); сюда change
 
   var setDisabled = function (fields) {
     for (var i = 0; i < fields.length; i++) {

@@ -17,10 +17,14 @@
     window.backend.load(onSuccess, onError);
   };
 
-  // var update = функция из фильтра
+  var updateOffers = function () {
+    window.pin.remove();
+    window.pin.render(window.filter(offers));
+  };
 
   window.data = {
-    load: loadOffers
+    load: loadOffers,
+    update: updateOffers
   };
 })();
 

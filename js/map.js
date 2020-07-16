@@ -7,7 +7,7 @@
   var isActive = false;
   var filters = document.querySelectorAll('.map__filter');
   var fieldsets = document.querySelectorAll('fieldset');
-  // var filterForm = document.querySelectorAll('.map__filters'); сюда change
+  var filterForm = document.querySelector('.map__filters');
 
   var setDisabled = function (fields) {
     for (var i = 0; i < fields.length; i++) {
@@ -67,7 +67,10 @@
     }
   };
 
+  var onFilterChange = window.data.update;
+
   document.addEventListener('keydown', onPinEnterPress);
+  filterForm.addEventListener('change', onFilterChange);
 
   window.map = {
     deactivatePage: deactivatePage

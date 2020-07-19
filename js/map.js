@@ -93,30 +93,22 @@
     var photos = element.querySelector('.popup__photos');
     var photo = element.querySelector('popup__photo');
 
-    title.innerHTML = data.offer.title;
-    cardAddress.innerHTML = data.offer.address;
-    price.innerHTML = data.offer.price + ' ₽/ночь';
-    type.innerHTML = data.offer.type;
-    time.innerHTML = 'Заезд после ' + data.offer.checkin + ' выезд до ' + data.offer.checkout;
-    features.innerHTML = data.offer.features;
-    description.innerHTML = data.offer.description;
-    capacity.innerHTML = data.offer.rooms + ' комнаты для ' + data.offer.guests;
+    title.textContent = data.offer.title;
+    cardAddress.textContent = data.offer.address;
+    price.textContent = data.offer.price + ' ₽/ночь';
+    type.textContent = data.offer.type;
+    time.textContent = 'Заезд после ' + data.offer.checkin + ' выезд до ' + data.offer.checkout;
+    features.textContent = data.offer.features;
+    description.textContent = data.offer.description;
+    capacity.textContent = data.offer.rooms + ' комнаты для ' + data.offer.guests;
     avatar.src = data.author.avatar;
 
     return element;
   };
 
   var renderCard = function (data) {
-    var fragment = document.createDocumentFragment();
-
-    for (var i = 0; i < data.length; i++) {
-      fragment.appendChild(fillCard(data[i]));
-    }
-
-    cardBlock.appendChild(fragment);
+    cardBlock.appendChild(fillCard(data));
   };
-
-  renderCard();
 
   window.map = {
     renderCard: renderCard,

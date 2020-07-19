@@ -6,6 +6,7 @@
   var onSuccess = function (data) {
     offers = data;
     window.pin.render(offers);
+    console.log(offers);
   };
 
   var onError = function (message) {
@@ -16,8 +17,14 @@
     window.backend.load(onSuccess, onError);
   };
 
+  var updateOffers = function () {
+    window.pin.remove();
+    window.pin.render(window.filter(offers));
+  };
+
   window.data = {
-    load: loadOffers
+    load: loadOffers,
+    update: updateOffers
   };
 })();
 

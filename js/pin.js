@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var MAX_PINS = 5;
+
   var pin = document.querySelector('#pin')
   .content
   .querySelector('.map__pin');
@@ -20,6 +22,8 @@
 
   var renderPins = function (data) {
     var fragment = document.createDocumentFragment();
+
+    data.length = data.length > MAX_PINS ? MAX_PINS : data.length;
 
     for (var i = 0; i < data.length; i++) {
       fragment.appendChild(fillPin(data[i]));

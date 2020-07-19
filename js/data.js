@@ -6,7 +6,7 @@
   var onSuccess = function (data) {
     offers = data;
     window.pin.render(offers);
-    window.map.renderCard(offers[0]);
+    window.card(offers[0]);
     console.log(offers);
   };
 

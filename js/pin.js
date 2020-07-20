@@ -17,6 +17,20 @@
     image.src = data.author.avatar;
     image.alt = data.offer.title;
 
+    var onPinClick = function (evt) {
+      evt.preventDefault();
+
+      var cardRemovable = document.querySelector('.map__card');
+
+      if (cardRemovable) {
+        cardRemovable.remove();
+      }
+
+      window.card.renderCard(data);
+    };
+
+    element.addEventListener('click', onPinClick);
+
     return element;
   };
 

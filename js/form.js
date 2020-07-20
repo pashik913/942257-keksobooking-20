@@ -15,12 +15,38 @@
     var value = typeOfHouse.value;
     priceOfHouse.placeholder = priceOfType[value];
     priceOfHouse.min = priceOfType[value];
+    disableСapacityOptions(roomsInput.value);
+    timeOut.value = timeIn.value;
   };
 
   document.addEventListener('change', onSelectChange);
 
   var guestsInput = document.querySelector('#capacity');
   var roomsInput = document.querySelector('#room_number');
+
+  var roomGuestRation = {
+    1: [1],
+    2: [1, 2],
+    3: [1, 2, 3],
+    100: [0]
+  };
+
+  var disableСapacityOptions = function (inputValue) {
+    var capacityOptions = guestsInput.querySelectorAll('option');
+    capacityOptions.forEach(function (it) {
+      it.disabled = true;
+    });
+    roomGuestRation[inputValue].forEach(function (it) {
+      guestsInput.querySelector('option' + '[value="' + it + '"]').disabled = false;
+      guestsInput.value = it;
+    });
+  };
+
+  disableСapacityOptions(roomsInput.value);
+
+  var timeIn = document.querySelector('#timein');
+  var timeOut = document.querySelector('#timeout');
+
 
   guestsInput.addEventListener('invalid', function () {
     if (guestsInput.validity.valueMissing) {

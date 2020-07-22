@@ -9,18 +9,58 @@
     house: 5000,
     palace: 10000
   };
+
   var buttonReset = document.querySelector('.ad-form__reset');
+  var adForm = document.querySelector('.ad-form');
 
   var onSelectChange = function () {
     var value = typeOfHouse.value;
+
     priceOfHouse.placeholder = priceOfType[value];
     priceOfHouse.min = priceOfType[value];
+    disableСapacityOptions(roomsInput.value);
+
   };
 
-  document.addEventListener('change', onSelectChange);
+  adForm.addEventListener('change', onSelectChange);
 
   var guestsInput = document.querySelector('#capacity');
   var roomsInput = document.querySelector('#room_number');
+
+  var roomGuestRation = {
+    1: [1],
+    2: [1, 2],
+    3: [1, 2, 3],
+    100: [0]
+  };
+
+  var timeIn = document.querySelector('#timein');
+  var timeOut = document.querySelector('#timeout');
+
+  var syncValue = function (first, second) {
+    second.value = first.value;
+  };
+
+  timeIn.addEventListener('change', function () {
+    syncValue(timeIn, timeOut);
+  });
+
+  timeOut.addEventListener('change', function () {
+    syncValue(timeOut, timeIn);
+  });
+
+  var disableСapacityOptions = function (inputValue) {
+    var capacityOptions = guestsInput.querySelectorAll('option');
+    capacityOptions.forEach(function (it) {
+      it.disabled = true;
+    });
+    roomGuestRation[inputValue].forEach(function (it) {
+      guestsInput.querySelector('option' + '[value="' + it + '"]').disabled = false;
+      guestsInput.value = it;
+    });
+  };
+
+  disableСapacityOptions(roomsInput.value);
 
   guestsInput.addEventListener('invalid', function () {
     if (guestsInput.validity.valueMissing) {

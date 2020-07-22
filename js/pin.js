@@ -17,6 +17,13 @@
     image.src = data.author.avatar;
     image.alt = data.offer.title;
 
+    element.addEventListener('click', function (evt) {
+      evt.preventDefault();
+
+      window.card.remove();
+      window.card.render(data);
+    });
+
     return element;
   };
 

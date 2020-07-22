@@ -19,7 +19,6 @@
 
     var onPinClick = function (evt) {
       evt.preventDefault();
-
       var cardRemovable = document.querySelector('.map__card');
 
       if (cardRemovable) {
@@ -30,7 +29,6 @@
     };
 
     element.addEventListener('click', onPinClick);
-
     return element;
   };
 

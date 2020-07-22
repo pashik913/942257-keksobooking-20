@@ -11,7 +11,6 @@
   var card = document.querySelector('#card')
   .content
   .querySelector('.map__card');
-
   var block = document.querySelector('.map__filters-container');
 
   var createFeatures = function (data) {
@@ -68,23 +67,23 @@
     photos.removeChild(photo);
     photos.appendChild(createPhotos(data.offer.photos));
 
-    var popupClose = element.querySelector('.popup__close');
-
-    popupClose.addEventListener('click', function (evt) {
+    var cardRemove = function (evt) {
       evt.preventDefault();
-
       element.remove();
-    });
+      document.removeEventListener('keydown', onEscPress);
+    };
 
     var ESC_BUTTON = 'Escape';
 
     var onEscPress = function (evt) {
       if (evt.key === ESC_BUTTON) {
-        evt.preventDefault();
-        element.remove();
+        cardRemove(evt);
       }
     };
 
+    var popupClose = element.querySelector('.popup__close');
+
+    popupClose.addEventListener('click', cardRemove);
     document.addEventListener('keydown', onEscPress);
 
     return element;

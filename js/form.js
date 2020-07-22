@@ -9,17 +9,20 @@
     house: 5000,
     palace: 10000
   };
+
   var buttonReset = document.querySelector('.ad-form__reset');
+  var adForm = document.querySelector('.ad-form');
 
   var onSelectChange = function () {
     var value = typeOfHouse.value;
     priceOfHouse.placeholder = priceOfType[value];
     priceOfHouse.min = priceOfType[value];
     disableСapacityOptions(roomsInput.value);
-    timeOut.value = timeIn.value;
+    timeOutChange(timeIn);
+    timeInChange(timeOut);
   };
 
-  document.addEventListener('change', onSelectChange);
+  adForm.addEventListener('change', onSelectChange);
 
   var guestsInput = document.querySelector('#capacity');
   var roomsInput = document.querySelector('#room_number');
@@ -29,6 +32,17 @@
     2: [1, 2],
     3: [1, 2, 3],
     100: [0]
+  };
+
+  var timeIn = document.querySelector('#timein');
+  var timeOut = document.querySelector('#timeout');
+
+  var timeOutChange = function (evt) {
+    timeIn.value = evt.target.value;
+  };
+
+  var timeInChange = function (evt) {
+    timeOut.value = evt.target.value;
   };
 
   var disableСapacityOptions = function (inputValue) {
@@ -43,10 +57,6 @@
   };
 
   disableСapacityOptions(roomsInput.value);
-
-  var timeIn = document.querySelector('#timein');
-  var timeOut = document.querySelector('#timeout');
-
 
   guestsInput.addEventListener('invalid', function () {
     if (guestsInput.validity.valueMissing) {

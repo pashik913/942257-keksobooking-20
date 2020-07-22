@@ -17,18 +17,13 @@
     image.src = data.author.avatar;
     image.alt = data.offer.title;
 
-    var onPinClick = function (evt) {
+    element.addEventListener('click', function (evt) {
       evt.preventDefault();
-      var cardRemovable = document.querySelector('.map__card');
 
-      if (cardRemovable) {
-        cardRemovable.remove();
-      }
+      window.card.remove();
+      window.card.render(data);
+    });
 
-      window.card.renderCard(data);
-    };
-
-    element.addEventListener('click', onPinClick);
     return element;
   };
 

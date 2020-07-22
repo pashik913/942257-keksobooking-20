@@ -15,11 +15,11 @@
 
   var onSelectChange = function () {
     var value = typeOfHouse.value;
+
     priceOfHouse.placeholder = priceOfType[value];
     priceOfHouse.min = priceOfType[value];
     disableСapacityOptions(roomsInput.value);
-    timeOutChange(timeIn);
-    timeInChange(timeOut);
+
   };
 
   adForm.addEventListener('change', onSelectChange);
@@ -37,13 +37,17 @@
   var timeIn = document.querySelector('#timein');
   var timeOut = document.querySelector('#timeout');
 
-  var timeOutChange = function (evt) {
-    timeIn.value = evt.target.value;
+  var syncValue = function (first, second) {
+    second.value = first.value;
   };
 
-  var timeInChange = function (evt) {
-    timeOut.value = evt.target.value;
-  };
+  timeIn.addEventListener('change', function () {
+    syncValue(timeIn, timeOut);
+  });
+
+  timeOut.addEventListener('change', function () {
+    syncValue(timeOut, timeIn);
+  });
 
   var disableСapacityOptions = function (inputValue) {
     var capacityOptions = guestsInput.querySelectorAll('option');

@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var LEFT_MOUSE_BUTTON = 0;
+  var ENTER_BUTTON = 'Enter';
   var map = document.querySelector('.map');
   var adForm = document.querySelector('.ad-form');
   var mainPin = document.querySelector('.map__pin--main');
@@ -48,20 +50,20 @@
     setDisabled(fieldsets);
     document.addEventListener('keydown', onPinEnterPress);
     adForm.reset();
+    window.card.remove();
+    isActive = false;
   };
 
   mainPin.addEventListener('mousedown', function (evt) {
     evt.preventDefault();
 
-    if (evt.button === 0 && !isActive) {
+    if (evt.button === LEFT_MOUSE_BUTTON && !isActive) {
       activatePage();
     }
   });
 
-  var ENTER_BUTTON = 'Enter';
-
   var onPinEnterPress = function (evt) {
-    if (evt.key === ENTER_BUTTON) {
+    if (evt.key === ENTER_BUTTON && !isActive) {
       evt.preventDefault();
       activatePage();
     }

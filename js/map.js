@@ -75,6 +75,7 @@
   filterForm.addEventListener('change', onFilterChange);
 
   window.map = {
-    deactivatePage: deactivatePage
+    deactivatePage: deactivatePage,
+    setAddress: setAddress
   };
 })();

@@ -129,4 +129,33 @@
     evt.preventDefault();
     window.map.deactivatePage();
   });
+
+  adForm.addEventListener('submit', function (evt) {
+    window.backend.upload(new FormData(adForm), function () {
+      window.map.deactivatePage();
+      renderPopupSuccess();
+      document.addEventListener('keydown', onEscPress);
+    });
+    evt.preventDefault();
+  });
+
+  var popupOnSuccess = document.querySelector('#success')
+  .content.querySelector('.success');
+  var main = document.querySelector('main');
+
+  popupOnSuccess.cloneNode(true);
+
+  var renderPopupSuccess = function () {
+    main.insertAdjacentElement('beforeend', popupOnSuccess);
+  };
+
+  var ESC_BUTTON = 'Escape';
+
+  var onEscPress = function (evt) {
+    if (evt.key === ESC_BUTTON) {
+      evt.preventDefault();
+      popupOnSuccess.remove();
+      document.removeEventListener('keydown', onEscPress);
+    }
+  };
 })();

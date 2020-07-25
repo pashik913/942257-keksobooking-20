@@ -6,11 +6,10 @@
   var onSuccess = function (data) {
     offers = data;
     window.pin.render(offers);
-    console.log(offers);
   };
 
   var onError = function (message) {
-    console.error(message);
+    window.popup.error(message);
   };
 
   var loadOffers = function () {

@@ -129,4 +129,19 @@
     evt.preventDefault();
     window.map.deactivatePage();
   });
+
+  var onSuccess = function () {
+    window.map.deactivatePage();
+    window.popup.success();
+  };
+
+  var onError = function (error) {
+    window.popup.error(error);
+    window.map.deactivatePage();
+  };
+
+  adForm.addEventListener('submit', function (evt) {
+    window.backend.upload(new FormData(adForm), onSuccess, onError);
+    evt.preventDefault();
+  });
 })();

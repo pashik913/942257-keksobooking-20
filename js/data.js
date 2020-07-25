@@ -6,7 +6,6 @@
   var onSuccess = function (data) {
     offers = data;
     window.pin.render(offers);
-    // console.log(offers);
   };
 
   var onError = function (message) {

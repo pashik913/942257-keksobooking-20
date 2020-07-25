@@ -3,8 +3,8 @@
 (function () {
   var LEFT_MOUSE_BUTTON = 0;
   var ENTER_BUTTON = 'Enter';
-  var PIN_LEFT = 570;
-  var PIN_TOP = 375;
+  var PIN_X = 570;
+  var PIN_Y = 375;
   var map = document.querySelector('.map');
   var adForm = document.querySelector('.ad-form');
   var mainPin = document.querySelector('.map__pin--main');
@@ -54,8 +54,8 @@
     adForm.reset();
     window.card.remove();
     isActive = false;
-    mainPin.style.top = PIN_TOP + 'px';
-    mainPin.style.left = PIN_LEFT + 'px';
+    mainPin.style.top = PIN_Y + 'px';
+    mainPin.style.left = PIN_X + 'px';
     setAddress(mainPin, 2);
   };
 

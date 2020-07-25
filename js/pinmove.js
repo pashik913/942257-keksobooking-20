@@ -55,11 +55,7 @@
       }
 
       window.map.setAddress(mainPin, 1);
-
-      return;
     };
-
-    window.pinmove = onMouseMove;
 
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();

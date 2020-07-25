@@ -12,14 +12,15 @@
   var filters = document.querySelectorAll('.map__filter');
   var fieldsets = document.querySelectorAll('fieldset');
   var filterForm = document.querySelector('.map__filters');
+  var address = document.querySelector('#address');
+
+  var onFilterChange = window.data.update;
 
   var setDisabled = function (fields) {
     for (var i = 0; i < fields.length; i++) {
       fields[i].disabled = !fields[i].disabled;
     }
   };
-
-  var address = document.querySelector('#address');
 
   var setAddress = function (elem, offset) {
     var x = Math.round(elem.offsetLeft + elem.offsetWidth / 2);
@@ -29,7 +30,6 @@
   };
 
   setAddress(mainPin, 2);
-
   setDisabled(filters);
   setDisabled(fieldsets);
 
@@ -73,8 +73,6 @@
       activatePage();
     }
   };
-
-  var onFilterChange = window.data.update;
 
   document.addEventListener('keydown', onPinEnterPress);
   filterForm.addEventListener('change', onFilterChange);

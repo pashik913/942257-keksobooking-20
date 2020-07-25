@@ -2,14 +2,12 @@
 
 (function () {
   var ESC_BUTTON = 'Escape';
-
   var typeToHouse = {
     flat: 'Квартира',
     bungalo: 'Бунгало',
     house: 'Дом',
     palace: 'Дворец'
   };
-
   var card = document.querySelector('#card')
   .content
   .querySelector('.map__card');

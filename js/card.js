@@ -1,7 +1,6 @@
 'use strict';
 
 (function () {
-  var ESC_BUTTON = 'Escape';
   var typeToHouse = {
     flat: 'Квартира',
     bungalo: 'Бунгало',
@@ -80,7 +79,7 @@
   };
 
   var onEscPress = function (evt) {
-    if (evt.key === ESC_BUTTON) {
+    if (evt.key === window.const.ESC_BUTTON) {
       evt.preventDefault();
       removeCard();
     }

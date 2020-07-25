@@ -16,10 +16,10 @@
     window.backend.load(onSuccess, onError);
   };
 
-  var updateOffers = function () {
+  var updateOffers = window.utils.debounce(function () {
     window.pin.remove();
     window.pin.render(window.filter(offers));
-  };
+  });
 
   window.data = {
     load: loadOffers,

@@ -9,7 +9,7 @@
   };
 
   var onError = function (message) {
-    console.error(message);
+    window.popup.error(message);
   };
 
   var loadOffers = function () {

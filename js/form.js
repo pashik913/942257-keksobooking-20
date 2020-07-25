@@ -130,14 +130,18 @@
     window.map.deactivatePage();
   });
 
-  adForm.addEventListener('submit', function (evt) {
-    document.addEventListener('keydown', window.popup.closeOnEsc);
-    document.addEventListener('click', window.popup.closeOnClick);
+  var onSuccess = function () {
+    window.map.deactivatePage();
+    window.popup.success();
+  };
 
-    window.backend.upload(new FormData(adForm), function () {
-      window.map.deactivatePage();
-      window.popup.success();
-    });
+  var onError = function (error) {
+    window.popup.error(error);
+    window.map.deactivatePage();
+  };
+
+  adForm.addEventListener('submit', function (evt) {
+    window.backend.upload(new FormData(adForm), onSuccess, onError);
     evt.preventDefault();
   });
 })();

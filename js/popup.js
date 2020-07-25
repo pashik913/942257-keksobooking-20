@@ -10,40 +10,64 @@
   var main = document.querySelector('main');
 
   var renderPopupSuccess = function () {
-    popupOnSuccess.cloneNode(true);
-    main.insertAdjacentElement('beforeend', popupOnSuccess);
+    var popup = popupOnSuccess.cloneNode(true);
+
+    document.addEventListener('keydown', onSuccessEscPress);
+    popup.addEventListener('click', function (evt) {
+      evt.preventDefault();
+
+      closeSuccessPopup();
+    });
+
+    main.append(popup);
   };
 
-  var renderPopupError = function () {
-    popupOnError.cloneNode(true);
-    main.insertAdjacentElement('beforeend', popupOnError);
+  var renderPopupError = function (error) {
+    var popup = popupOnError.cloneNode(true);
+    var message = popup.querySelector('.error__message');
+
+    message.textContent = error;
+    document.addEventListener('keydown', onErrorEscPress);
+    popup.addEventListener('click', function (evt) {
+      evt.preventDefault();
+
+      closeErrorPopup();
+    });
+
+    main.append(popup);
   };
 
   var ESC_BUTTON = 'Escape';
 
-  var popupClose = function () {
-    popupOnSuccess.remove();
-    document.removeEventListener('keydown', onEscPress);
-    document.removeEventListener('click', onPopupClick);
+  var closeSuccessPopup = function () {
+    var popup = document.querySelector('.success');
+    popup.remove();
+    document.removeEventListener('keydown', onSuccessEscPress);
   };
 
-  var onEscPress = function (evt) {
+  var closeErrorPopup = function () {
+    var popup = document.querySelector('.error');
+    popup.remove();
+    document.removeEventListener('keydown', onErrorEscPress);
+  };
+
+  var onSuccessEscPress = function (evt) {
     if (evt.key === ESC_BUTTON) {
       evt.preventDefault();
-      popupClose();
+      closeSuccessPopup();
     }
   };
 
-  var onPopupClick = function (evt) {
-    evt.preventDefault();
-    popupClose();
+  var onErrorEscPress = function (evt) {
+    if (evt.key === ESC_BUTTON) {
+      evt.preventDefault();
+      closeErrorPopup();
+    }
   };
 
   window.popup = {
     success: renderPopupSuccess,
-    error: renderPopupError,
-    closeOnEsc: onEscPress,
-    closeOnClick: onPopupClick
+    error: renderPopupError
   };
 })();
 

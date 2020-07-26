@@ -3,7 +3,7 @@
 (function () {
   var Y__COORD_BORDER = 65;
   var mainPin = document.querySelector('.map__pin--main');
-  var DragLimit = {
+  var dragLimit = {
     X: {
       MIN: 0,
       MAX: 1200
@@ -41,10 +41,10 @@
       };
 
       var border = {
-        TOP: DragLimit.Y.MIN - mainPin.offsetHeight + Y__COORD_BORDER,
-        BOTTOM: DragLimit.Y.MAX - mainPin.offsetHeight + Y__COORD_BORDER,
-        LEFT: DragLimit.X.MIN,
-        RIGHT: DragLimit.X.MAX - mainPin.offsetWidth
+        TOP: dragLimit.Y.MIN - mainPin.offsetHeight + Y__COORD_BORDER,
+        BOTTOM: dragLimit.Y.MAX - mainPin.offsetHeight + Y__COORD_BORDER,
+        LEFT: dragLimit.X.MIN,
+        RIGHT: dragLimit.X.MAX - mainPin.offsetWidth
       };
 
       if (mainPinPosition.x >= border.LEFT && mainPinPosition.x <= border.RIGHT) {

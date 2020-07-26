@@ -3,12 +3,9 @@
 (function () {
   var MIN_TITLE_LENGTH = 30;
   var MAX_TITLE_LENGTH = 100;
-<<<<<<< HEAD
   var titleInput = document.querySelector('#title');
   var typeOfHouse = document.querySelector('#type');
   var priceOfHouse = document.querySelector('#price');
-=======
->>>>>>> 518eaefb1b1090706809e873bfd5f52969a1d81f
   var priceOfType = {
     bungalo: 0,
     flat: 1000,
@@ -21,23 +18,12 @@
     3: [1, 2, 3],
     100: [0]
   };
-<<<<<<< HEAD
   var timeIn = document.querySelector('#timein');
   var timeOut = document.querySelector('#timeout');
-=======
-  var titleInput = document.querySelector('#title');
-  var typeOfHouse = document.querySelector('#type');
-  var priceOfHouse = document.querySelector('#price');
->>>>>>> 518eaefb1b1090706809e873bfd5f52969a1d81f
   var buttonReset = document.querySelector('.ad-form__reset');
   var adForm = document.querySelector('.ad-form');
   var guestsInput = document.querySelector('#capacity');
   var roomsInput = document.querySelector('#room_number');
-<<<<<<< HEAD
-=======
-  var timeIn = document.querySelector('#timein');
-  var timeOut = document.querySelector('#timeout');
->>>>>>> 518eaefb1b1090706809e873bfd5f52969a1d81f
 
   var onSelectChange = function () {
     var value = typeOfHouse.value;

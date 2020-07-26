@@ -5,7 +5,6 @@
     min: 10000,
     max: 50000
   };
-<<<<<<< HEAD
   var options = document.querySelectorAll('.map__filter');
   var priceToType = {
     low: function (price) {
@@ -21,28 +20,6 @@
 
   var filterByType = function (item, type, value) {
     return item.offer[type].toString() === value;
-=======
-  var priceSelect = document.querySelector('#housing-price');
-
-  var filterByType = function (data, value, type) {
-    return data.filter(function (it) {
-      return it.offer[type].toString() === value;
-    });
-  };
-
-  var filterByPrice = function (data, type) {
-    return data.filter(function (it) {
-      var price = it.offer[type];
-      if (priceSelect.value === 'low') {
-        return price <= PRICES.min;
-      } else if (priceSelect.value === 'middle') {
-        return price >= PRICES.min && price <= PRICES.max;
-      } else if (priceSelect.value === 'high') {
-        return price >= PRICES.max;
-      }
-      return it;
-    });
->>>>>>> 518eaefb1b1090706809e873bfd5f52969a1d81f
   };
 
   var filterByFeatures = function (data, value) {

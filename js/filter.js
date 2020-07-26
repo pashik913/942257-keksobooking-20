@@ -5,14 +5,13 @@
     min: 10000,
     max: 50000
   };
+  var priceSelect = document.querySelector('#housing-price');
 
   var filterByType = function (data, value, type) {
     return data.filter(function (it) {
       return it.offer[type].toString() === value;
     });
   };
-
-  var priceSelect = document.querySelector('#housing-price');
 
   var filterByPrice = function (data, type) {
     return data.filter(function (it) {

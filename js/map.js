@@ -12,14 +12,13 @@
   var filters = document.querySelectorAll('.map__filter');
   var fieldsets = document.querySelectorAll('fieldset');
   var filterForm = document.querySelector('.map__filters');
+  var address = document.querySelector('#address');
 
   var setDisabled = function (fields) {
-    for (var i = 0; i < fields.length; i++) {
-      fields[i].disabled = !fields[i].disabled;
-    }
+    fields.forEach(function (it) {
+      it.disabled = !it.disabled;
+    });
   };
-
-  var address = document.querySelector('#address');
 
   var setAddress = function (elem, offset) {
     var x = Math.round(elem.offsetLeft + elem.offsetWidth / 2);
@@ -52,6 +51,7 @@
     setDisabled(fieldsets);
     document.addEventListener('keydown', onPinEnterPress);
     adForm.reset();
+    filterForm.reset();
     window.card.remove();
     isActive = false;
     mainPin.style.top = PIN_Y + 'px';

@@ -1,6 +1,9 @@
 'use strict';
 
 (function () {
+  var MIN_TITLE_LENGTH = 30;
+  var MAX_TITLE_LENGTH = 100;
+  var titleInput = document.querySelector('#title');
   var typeOfHouse = document.querySelector('#type');
   var priceOfHouse = document.querySelector('#price');
   var priceOfType = {
@@ -9,9 +12,18 @@
     house: 5000,
     palace: 10000
   };
-
+  var roomGuestRation = {
+    1: [1],
+    2: [1, 2],
+    3: [1, 2, 3],
+    100: [0]
+  };
+  var timeIn = document.querySelector('#timein');
+  var timeOut = document.querySelector('#timeout');
   var buttonReset = document.querySelector('.ad-form__reset');
   var adForm = document.querySelector('.ad-form');
+  var guestsInput = document.querySelector('#capacity');
+  var roomsInput = document.querySelector('#room_number');
 
   var onSelectChange = function () {
     var value = typeOfHouse.value;
@@ -19,23 +31,9 @@
     priceOfHouse.placeholder = priceOfType[value];
     priceOfHouse.min = priceOfType[value];
     disableСapacityOptions(roomsInput.value);
-
   };
 
   adForm.addEventListener('change', onSelectChange);
-
-  var guestsInput = document.querySelector('#capacity');
-  var roomsInput = document.querySelector('#room_number');
-
-  var roomGuestRation = {
-    1: [1],
-    2: [1, 2],
-    3: [1, 2, 3],
-    100: [0]
-  };
-
-  var timeIn = document.querySelector('#timein');
-  var timeOut = document.querySelector('#timeout');
 
   var syncValue = function (first, second) {
     second.value = first.value;
@@ -80,10 +78,6 @@
       roomsInput.setCustomValidity('');
     }
   });
-
-  var MIN_TITLE_LENGTH = 30;
-  var MAX_TITLE_LENGTH = 100;
-  var titleInput = document.querySelector('#title');
 
   titleInput.addEventListener('invalid', function () {
     if (titleInput.validity.valueMissing) {

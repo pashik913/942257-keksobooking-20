@@ -18,6 +18,7 @@
 
   var updateOffers = window.utils.debounce(function () {
     window.pin.remove();
+    window.card.remove();
     window.pin.render(window.filter(offers));
   });
 

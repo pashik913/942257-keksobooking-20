@@ -14,9 +14,9 @@
   var address = document.querySelector('#address');
 
   var setDisabled = function (fields) {
-    for (var i = 0; i < fields.length; i++) {
-      fields[i].disabled = !fields[i].disabled;
-    }
+    fields.forEach(function (it) {
+      it.disabled = !it.disabled;
+    });
   };
 
   var setAddress = function (elem, offset) {
@@ -49,6 +49,7 @@
     setDisabled(fieldsets);
     document.addEventListener('keydown', onPinEnterPress);
     adForm.reset();
+    filterForm.reset();
     window.card.remove();
     isActive = false;
     mainPin.style.top = PIN_Y + 'px';

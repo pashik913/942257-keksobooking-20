@@ -31,9 +31,9 @@
 
     data.length = data.length > MAX_PINS ? MAX_PINS : data.length;
 
-    for (var i = 0; i < data.length; i++) {
-      fragment.appendChild(fillPin(data[i]));
-    }
+    data.forEach(function (item) {
+      fragment.appendChild(fillPin(item));
+    });
 
     mapPinBlock.appendChild(fragment);
   };
@@ -41,11 +41,11 @@
   var removePins = function () {
     var pins = document.querySelectorAll('.map__pin');
 
-    for (var i = 0; i < pins.length; i++) {
-      if (!pins[i].classList.contains('map__pin--main')) {
-        pins[i].remove();
+    pins.forEach(function (item) {
+      if (!item.classList.contains('map__pin--main')) {
+        item.remove();
       }
-    }
+    });
   };
 
   window.pin = {

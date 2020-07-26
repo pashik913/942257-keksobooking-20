@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var Y__COORD_BORDER = 65;
+  var Y_COORD_BORDER = 65;
   var mainPin = document.querySelector('.map__pin--main');
   var dragLimit = {
     X: {
@@ -41,8 +41,8 @@
       };
 
       var border = {
-        TOP: dragLimit.Y.MIN - mainPin.offsetHeight + Y__COORD_BORDER,
-        BOTTOM: dragLimit.Y.MAX - mainPin.offsetHeight + Y__COORD_BORDER,
+        TOP: dragLimit.Y.MIN - mainPin.offsetHeight + Y_COORD_BORDER,
+        BOTTOM: dragLimit.Y.MAX - mainPin.offsetHeight + Y_COORD_BORDER,
         LEFT: dragLimit.X.MIN,
         RIGHT: dragLimit.X.MAX - mainPin.offsetWidth
       };

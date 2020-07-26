@@ -6,7 +6,7 @@
     max: 50000
   };
   var options = document.querySelectorAll('.map__filter');
-  var priceToType = {
+  var PriceToType = {
     low: function (price) {
       return price < PRICES.min;
     },
@@ -48,7 +48,7 @@
             return filterByType(it, 'guests', option.value);
 
           case 'housing-price':
-            return priceToType[option.value](it.offer.price);
+            return PriceToType[option.value](it.offer.price);
         }
 
         return it;

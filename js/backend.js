@@ -7,7 +7,11 @@
   var StatusCode = {
     OK: 200
   };
+<<<<<<< HEAD
 
+=======
+  var TIMEOUT_IN_MS = 10000;
+>>>>>>> 518eaefb1b1090706809e873bfd5f52969a1d81f
   var messageOfError = {
     400: 'Неверный запрос',
     401: 'Пользователь не авторизирован',

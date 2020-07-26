@@ -2,7 +2,6 @@
 
 (function () {
   var LEFT_MOUSE_BUTTON = 0;
-  var ENTER_BUTTON = 'Enter';
   var PIN_X = 570;
   var PIN_Y = 375;
   var map = document.querySelector('.map');
@@ -28,7 +27,6 @@
   };
 
   setAddress(mainPin, 2);
-
   setDisabled(filters);
   setDisabled(fieldsets);
 
@@ -68,13 +66,13 @@
   });
 
   var onPinEnterPress = function (evt) {
-    if (evt.key === ENTER_BUTTON && !isActive) {
+    if (evt.key === window.const.ENTER_BUTTON && !isActive) {
       evt.preventDefault();
       activatePage();
     }
   };
 
-  var onFilterChange = window.data.update;
+  var onFilterChange = window.utils.debounce(window.data.update);
 
   document.addEventListener('keydown', onPinEnterPress);
   filterForm.addEventListener('change', onFilterChange);

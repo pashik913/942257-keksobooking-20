@@ -2,7 +2,6 @@
 
 (function () {
   var LEFT_MOUSE_BUTTON = 0;
-  var ENTER_BUTTON = 'Enter';
   var PIN_X = 570;
   var PIN_Y = 375;
   var map = document.querySelector('.map');
@@ -12,14 +11,13 @@
   var filters = document.querySelectorAll('.map__filter');
   var fieldsets = document.querySelectorAll('fieldset');
   var filterForm = document.querySelector('.map__filters');
+  var address = document.querySelector('#address');
 
   var setDisabled = function (fields) {
     for (var i = 0; i < fields.length; i++) {
       fields[i].disabled = !fields[i].disabled;
     }
   };
-
-  var address = document.querySelector('#address');
 
   var setAddress = function (elem, offset) {
     var x = Math.round(elem.offsetLeft + elem.offsetWidth / 2);
@@ -29,7 +27,6 @@
   };
 
   setAddress(mainPin, 2);
-
   setDisabled(filters);
   setDisabled(fieldsets);
 
@@ -68,13 +65,13 @@
   });
 
   var onPinEnterPress = function (evt) {
-    if (evt.key === ENTER_BUTTON && !isActive) {
+    if (evt.key === window.const.ENTER_BUTTON && !isActive) {
       evt.preventDefault();
       activatePage();
     }
   };
 
-  var onFilterChange = window.data.update;
+  var onFilterChange = window.utils.debounce(window.data.update);
 
   document.addEventListener('keydown', onPinEnterPress);
   filterForm.addEventListener('change', onFilterChange);

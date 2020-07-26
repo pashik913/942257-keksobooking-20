@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  // var ESC_BUTTON = 'Escape';
   var popupOnSuccess = document.querySelector('#success')
   .content
   .querySelector('.success');
@@ -37,8 +38,6 @@
     main.append(popup);
   };
 
-  var ESC_BUTTON = 'Escape';
-
   var closeSuccessPopup = function () {
     var popup = document.querySelector('.success');
     popup.remove();
@@ -52,14 +51,14 @@
   };
 
   var onSuccessEscPress = function (evt) {
-    if (evt.key === ESC_BUTTON) {
+    if (evt.key === window.const.ESC_BUTTON) {
       evt.preventDefault();
       closeSuccessPopup();
     }
   };
 
   var onErrorEscPress = function (evt) {
-    if (evt.key === ESC_BUTTON) {
+    if (evt.key === window.const.ESC_BUTTON) {
       evt.preventDefault();
       closeErrorPopup();
     }

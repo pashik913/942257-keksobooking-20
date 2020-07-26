@@ -1,15 +1,12 @@
 'use strict';
 
 (function () {
-  var ESC_BUTTON = 'Escape';
-
   var typeToHouse = {
     flat: 'Квартира',
     bungalo: 'Бунгало',
     house: 'Дом',
     palace: 'Дворец'
   };
-
   var card = document.querySelector('#card')
   .content
   .querySelector('.map__card');
@@ -82,7 +79,7 @@
   };
 
   var onEscPress = function (evt) {
-    if (evt.key === ESC_BUTTON) {
+    if (evt.key === window.const.ESC_BUTTON) {
       evt.preventDefault();
       removeCard();
     }
